@@ -1,13 +1,10 @@
-﻿using Tickets.Models;
+﻿using Tickets.Data.BaseEntity;
+using Tickets.Models;
 
 namespace Tickets.Data.Services
 {
-    public interface IActor
+    public interface IActor:IBaseRepository<Actor>
     {
-       Task< IEnumerable<Actor>> GetActors();
-        Actor GetActor(int id);
-        void AddActor(Actor actor);
-        void RemoveActor(int id);
-        void UpdateActor(int id,Actor updatedactor);
+       
     }
 }
