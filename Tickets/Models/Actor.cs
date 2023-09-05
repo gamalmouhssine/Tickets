@@ -8,7 +8,7 @@ namespace Tickets.Models
        
 
         [Key]
-        public int IdActor { get; set; }
+        public int id { get; set; }
         public List<ActorMovies> actorMovies { get; set; }
     }
 }

@@ -10,13 +10,13 @@ namespace Tickets.Data.BaseEntity
         {
             _appdbcontext = appdbcontext;
         }
-        public async Task AddActor(T actor)
+        public async Task Add(T actor)
         {
             await _appdbcontext.Set<T>().AddAsync(actor);
             await _appdbcontext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetActors()
+        public async Task<IEnumerable<T>> GetAll ()
         {
             var allactors = await _appdbcontext.Set<T>().ToListAsync();
             return allactors;
@@ -24,23 +24,23 @@ namespace Tickets.Data.BaseEntity
 
         public async Task<T> Getbyid(int id)
         {
-            var getactorbyid = await _appdbcontext.Set<T>().FirstOrDefaultAsync(n => n.IdActor == id);
+            var getactorbyid = await _appdbcontext.Set<T>().FirstOrDefaultAsync(n => n.id == id);
             return getactorbyid;
         }
 
-        public async Task RemoveActor(int id)
+        public async Task Remove(int id)
         {
-            var getactorbyid = await _appdbcontext.Set<T>().FirstOrDefaultAsync(n => n.IdActor == id);
+            var getactorbyid = await _appdbcontext.Set<T>().FirstOrDefaultAsync(n => n.id == id);
 
             var delete = _appdbcontext.Entry<T>(getactorbyid);
             delete.State = EntityState.Deleted;
             await _appdbcontext.SaveChangesAsync();
         }
 
-        public async Task UpdateActor(int id, T updatedactor)
+        public async Task Update(int id, T update)
         {
-           var update= _appdbcontext.Entry<T>(updatedactor);
-            update.State = EntityState.Modified;
+           var upgrade= _appdbcontext.Entry<T>(update);
+            upgrade.State = EntityState.Modified;
             await _appdbcontext.SaveChangesAsync();
           
         }

@@ -17,7 +17,7 @@ namespace Tickets.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allactors = await _appdbcontext.GetActors();
+            var allactors = await _appdbcontext.GetAll();
             return View(allactors);
         }
         //Get
@@ -28,7 +28,7 @@ namespace Tickets.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Actor actor)
         {
-            _appdbcontext.AddActor(actor);
+            _appdbcontext.Add(actor);
             return View();
         }
         //Get
@@ -45,7 +45,7 @@ namespace Tickets.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(int id,Actor actor)
         {
-            await _appdbcontext.UpdateActor(id, actor);
+            await _appdbcontext.Update(id, actor);
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> Delete(int id)
@@ -56,7 +56,7 @@ namespace Tickets.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> Deleteconfermed(int id)
         {
-            await _appdbcontext.RemoveActor(id);
+            await _appdbcontext.Remove(id);
             return RedirectToAction("Index");
         }
 
