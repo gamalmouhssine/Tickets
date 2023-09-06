@@ -1,13 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Tickets.Data.BaseEntity;
 using Tickets.StaticData;
 
 namespace Tickets.Models
 {
-    public class Movie
+    public class Movie:IEntityBase
     {
         [Key] 
-        public int IdMovie { get; set; }
+        public int id { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]

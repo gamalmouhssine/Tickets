@@ -17,8 +17,8 @@ namespace Tickets.Controllers
       
         public async Task<IActionResult> Index()
         {
-            var allproducers = await _appdbcontext.GetAll();
-            return View(allproducers);
+            var allcinema = await _appdbcontext.GetAll();
+            return View(allcinema);
         }
         //Get
         public async Task<IActionResult> Create()

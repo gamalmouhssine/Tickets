@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tickets.Data;
 
@@ -11,9 +12,10 @@ using Tickets.Data;
 namespace Tickets.Migrations
 {
     [DbContext(typeof(Appdbcontext))]
-    partial class AppdbcontextModelSnapshot : ModelSnapshot
+    [Migration("20230905222313_upfate3")]
+    partial class upfate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,11 +91,11 @@ namespace Tickets.Migrations
 
             modelBuilder.Entity("Tickets.Models.Movie", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("IdMovie")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMovie"), 1L, 1);
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -125,7 +127,7 @@ namespace Tickets.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("IdMovie");
 
                     b.HasIndex("IdCinema");
 

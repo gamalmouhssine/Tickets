@@ -3,7 +3,7 @@ using Tickets.Data.BaseEntity;
 
 namespace Tickets.Models
 {
-    public class Cinema : Crew, IEntityBase
+    public class Cinema : IEntityBase
     {
         [Key]
         public int id { get; set; }

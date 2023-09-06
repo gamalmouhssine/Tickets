@@ -17,6 +17,8 @@ builder.Services.AddDbContext<Appdbcontext>(options =>
 builder.Services.AddScoped<IActor, ActorService>();
 builder.Services.AddScoped<IProducer, ProducerService>();
 builder.Services.AddScoped<ICinema, CinemaSevice>();
+builder.Services.AddScoped<IMovies, MovieService>();
+
 
 
 builder.Services.AddControllersWithViews();

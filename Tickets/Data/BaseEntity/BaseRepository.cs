@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Tickets.Data.BaseEntity
 {
@@ -20,6 +21,14 @@ namespace Tickets.Data.BaseEntity
         {
             var allactors = await _appdbcontext.Set<T>().ToListAsync();
             return allactors;
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> Query = _appdbcontext.Set<T>();
+            Query = includeProperties.Aggregate(Query, (current, includeProperties) => 
+            current.Include(includeProperties));
+            return await Query.ToListAsync();
         }
 
         public async Task<T> Getbyid(int id)
